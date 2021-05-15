@@ -6,39 +6,61 @@ using DobbleConsoleProject;
 
 public class GenerateDeck : MonoBehaviour
 {
-    public GameObject cardBackground;
+    public static Object[] spritesArray;
+    public static List<Card> deck;
 
-    List<Card> deck;
+
+    public GameObject guiCardPrefab;
+
     List<double> anglesList = new List<double>();
     int n = 7;
 
     // Array of all the images that go on cards (needs to be cast to Sprite)
-    public Object[] spritesArray;
 
-    public GuiCard card1;
-    public GuiCard card2;
+    public GuiCardScript card1;
+    public GuiCardScript card2;
 
     // Start is called before the first frame update
     void Start()
     {
         Dobble d = new Dobble(n);
         deck = d.createDeck();
-        anglesList = CalculateImageAngles();
+        //anglesList = CalculateImageAngles();
 
         /// https://docs.unity3d.com/ScriptReference/Resources.LoadAll.html
         spritesArray = Resources.LoadAll("DobbleImages", typeof(Sprite));
 
+        /*
         // Card 1 
-        int rndCard1 = Random.Range(0, deck.Count - 1);
         Vector2 circleCentre1 = new Vector2(-2, 0);
+        GameObject cardObj1 = Instantiate(guiCardPrefab, circleCentre1, Quaternion.identity);
+
+        // Make this object a child of the camera
+        cardObj1.GetComponent<Transform>().parent = Camera.main.transform;
+
+        // Card 1 
+        Vector2 circleCentre2 = new Vector2(2, 0);
+        GameObject cardObj2 = Instantiate(guiCardPrefab, circleCentre2, Quaternion.identity);
+
+        // Make this object a child of the camera
+        cardObj2.GetComponent<Transform>().parent = Camera.main.transform;
+        */
+
+        /*
+        Vector2 circleCentre1 = new Vector2(-2, 0);
+        int rndCard1 = Random.Range(0, deck.Count - 1);
         card1 = new GuiCard(circleCentre1, deck[rndCard1].imageIndexs, "GuiCard1");
         DrawCard(card1);
+        */
+
 
         // Card 2
+        /*
         int rndCard2 = Random.Range(0, deck.Count - 1);
         Vector2 circleCentre2 = new Vector2(2, 0);
         card2 = new GuiCard(circleCentre2, deck[rndCard2].imageIndexs, "GuiCard2");
         DrawCard(card2);
+        */
 
         //Debug.Log(card1.name + " card.GOspritesList.count: " + card1.GOspritesList.Count);
         //Debug.Log(card2.name + " card.GOspritesList.count: " + card2.GOspritesList.Count);
@@ -48,7 +70,7 @@ public class GenerateDeck : MonoBehaviour
         //Debug.Log("Screen.width: " + Screen.width);
     }
 
-    private void DrawCard(GuiCard card)
+    private void DrawCard(GuiCardScript card)
     {
         DrawCircleBackground(card.centrePoint);
 
@@ -57,7 +79,7 @@ public class GenerateDeck : MonoBehaviour
         DrawRotatedImages(card);
     }
 
-    private void DrawRotatedImages(GuiCard card)
+    private void DrawRotatedImages(GuiCardScript card)
     {
         // offset all individual angles with a single value
         // so that images aren't always in the same place
@@ -98,13 +120,13 @@ public class GenerateDeck : MonoBehaviour
     {
         // Creates an instance of the prefab that dragged the GameObject 
         // variable in the editor (once I declared a public GameObject
-        GameObject cardObj = Instantiate(cardBackground, circleCentre, Quaternion.identity);
+        GameObject cardObj = Instantiate(guiCardPrefab, circleCentre, Quaternion.identity);
         SpriteRenderer backgroundSpriteRenderer = cardObj.GetComponent<SpriteRenderer>();
 
         backgroundSpriteRenderer.sortingLayerName = "Background";
     }
 
-    private void DrawCentreImage(GuiCard card)
+    private void DrawCentreImage(GuiCardScript card)
     {
         GameObject centreSprite = new GameObject("Sprite" + n, typeof(SpriteRenderer), typeof(BoxCollider2D));
 
@@ -135,7 +157,7 @@ public class GenerateDeck : MonoBehaviour
         return anglesList;
     }
 
-    private List<Object> GetSpritesForCard(List<int> imageIndexList)
+    public static List<Object> GetSpritesForCard(List<int> imageIndexList)
     {
         List<Object> returnSpriteList = new List<Object>();
 
@@ -145,42 +167,5 @@ public class GenerateDeck : MonoBehaviour
         }
 
         return returnSpriteList;
-    }
-
-    // Run once a frame
-    public void Update()
-    {
-        List<int> cardsCurrentlyUsed = new List<int>();
-
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            // This gives the GuiCard a new Dobble card
-            // i.e. a new set of images 
-            // this is random and really just as a test
-            // for when playing I want to implement it as a game
-
-            /// Card 1
-            /// 
-            /// Pick a random Dobble card
-            int rndCard1 = Random.Range(0, deck.Count - 1);
-            Card card = new Card(deck[rndCard1].imageIndexs);
-
-            cardsCurrentlyUsed.Add(rndCard1);
-            
-            /// Ensure this randomly picked card isn't the same 
-            /// as the above randomly picked card (card1)
-            int rndCard2;
-            do
-            {
-                rndCard2 = Random.Range(0, deck.Count - 1);
-
-            } while (cardsCurrentlyUsed.Contains(rndCard2));
-
-            card1.UpdateGuiCard(card, GetSpritesForCard(card.imageIndexs));
-
-            card = new Card(deck[rndCard2].imageIndexs);
-
-            card2.UpdateGuiCard(card, GetSpritesForCard(card.imageIndexs));
-        }
     }
 }
