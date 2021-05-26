@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4008073117692228341}
   - component: {fileID: 6011994385860860599}
-  - component: {fileID: 5476181954405653545}
+  - component: {fileID: 3269732865619815197}
   m_Layer: 0
   m_Name: SpritePlaceholder (4)
   m_TagString: OuterImage
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5476181954405653545
-BoxCollider2D:
+--- !u!58 &3269732865619815197
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,18 +97,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &2945455996907495225
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +112,7 @@ GameObject:
   - component: {fileID: 6014163843120939256}
   m_Layer: 0
   m_Name: GuiCardPrefab
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +205,8 @@ MonoBehaviour:
   GOspritesList: []
   imageIndexs: 
   centrePoint: {x: 0, y: 0}
-  Children: []
+  childOuterImages: []
+  centreImage: {fileID: 0}
 --- !u!1 &3157078393572388332
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4982408799275219216}
   - component: {fileID: 359881642654502156}
-  - component: {fileID: 1351254378229606659}
+  - component: {fileID: 2267757994261987912}
   m_Layer: 0
   m_Name: SpritePlaceholder
   m_TagString: OuterImage
@@ -299,8 +290,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1351254378229606659
-BoxCollider2D:
+--- !u!58 &2267757994261987912
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -313,18 +304,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &6201788893806066344
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2832124243250864167}
   - component: {fileID: 7844478454797244648}
-  - component: {fileID: 2291058489778269359}
+  - component: {fileID: 2335521215581843434}
   m_Layer: 0
   m_Name: CentreSpritePlaceholder
   m_TagString: CentreImage
@@ -408,8 +389,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2291058489778269359
-BoxCollider2D:
+--- !u!58 &2335521215581843434
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -422,18 +403,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &6947591278483565668
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5061873065960659055}
   - component: {fileID: 4360818326778611857}
-  - component: {fileID: 6679045622509893570}
+  - component: {fileID: 654186736282413991}
   m_Layer: 0
   m_Name: SpritePlaceholder (3)
   m_TagString: OuterImage
@@ -517,8 +488,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6679045622509893570
-BoxCollider2D:
+--- !u!58 &654186736282413991
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -531,18 +502,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &7136625284085645576
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3283891560938653338}
   - component: {fileID: 7064937660836219222}
-  - component: {fileID: 5370889536098252366}
+  - component: {fileID: 7914638797400804946}
   m_Layer: 0
   m_Name: SpritePlaceholder (2)
   m_TagString: OuterImage
@@ -626,8 +587,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5370889536098252366
-BoxCollider2D:
+--- !u!58 &7914638797400804946
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -640,18 +601,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &7708771914187451217
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2591166163788974594}
   - component: {fileID: 619069987680796351}
-  - component: {fileID: 4356530615198301013}
+  - component: {fileID: 8108858442245695225}
   m_Layer: 0
   m_Name: SpritePlaceholder (6)
   m_TagString: OuterImage
@@ -735,8 +686,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4356530615198301013
-BoxCollider2D:
+--- !u!58 &8108858442245695225
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -749,18 +700,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &8418134900387858614
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7758390031154232659}
   - component: {fileID: 5050702014774470837}
-  - component: {fileID: 3554501585746630784}
+  - component: {fileID: 6680894916995461127}
   m_Layer: 0
   m_Name: SpritePlaceholder (5)
   m_TagString: OuterImage
@@ -844,8 +785,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3554501585746630784
-BoxCollider2D:
+--- !u!58 &6680894916995461127
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -858,18 +799,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997
 --- !u!1 &9139586087216545757
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3563624462829773887}
   - component: {fileID: 2841413984575939537}
-  - component: {fileID: 9175177205802711367}
+  - component: {fileID: 370081134026526}
   m_Layer: 0
   m_Name: SpritePlaceholder (1)
   m_TagString: OuterImage
@@ -953,8 +884,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &9175177205802711367
-BoxCollider2D:
+--- !u!58 &370081134026526
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -967,15 +898,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.6}
-    newSize: {x: 0.81, y: 0.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81, y: 0.6}
-  m_EdgeRadius: 0
+  m_Radius: 0.40499997

@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 using DobbleConsoleProject;
-
 
 public class GuiCardScript : MonoBehaviour
 {
@@ -14,30 +10,18 @@ public class GuiCardScript : MonoBehaviour
 
     //double n = 7;
 
-    //public string name;
-    /*
-    public GuiCard(Vector2 _centrePoint, List<int> _imageIndexs, string _name)
-    {
-        GOspritesList = new List<GameObject>();
-
-        name = _name;
-        centrePoint = _centrePoint;
-        imageIndexs = _imageIndexs;
-    }*/
-
     public List<GameObject> childOuterImages;
     public GameObject centreImage;
 
     List<double> anglesList = new List<double>();
 
-    private void Start()
+    private void Awake()
     {
         anglesList = CalculateImageAngles(7);
 
         Vector3 zAxis = new Vector3(0, 0, 1);
         int rnd = Random.Range(0, 359);
         int i = 0;
-
         /// Get all child images with tag 'OuterImage'
         /// in prefab all the outer images are in the same place
         /// i.e. are all placed on top of each other.
@@ -60,6 +44,7 @@ public class GuiCardScript : MonoBehaviour
             }
         }
 
+        //Debug.Log("guicardscrip.start() - childOuterImages.Count: " + childOuterImages.Count);
     }
     private static List<double> CalculateImageAngles(double n)
     {
@@ -87,8 +72,27 @@ public class GuiCardScript : MonoBehaviour
         }
     }
 
+    /// This is for updating the centralComparisonGuiCard to take
+    /// in a GuiCard as a parameter and copy the images that GuiCard input has
+    public void UpdateGuiCard(GameObject inputGuiCard)
+    {
+        // Apply centre image of input card to this one (presumably the centralComparisonGuiCard)
+        centreImage.GetComponent<SpriteRenderer>().sprite = 
+            inputGuiCard.GetComponent<GuiCardScript>().centreImage.GetComponent<SpriteRenderer>().sprite;
+
+        for(int i = 0; i < this.childOuterImages.Count;i++)
+        {
+            this.childOuterImages[i].GetComponent<SpriteRenderer>().sprite = 
+                inputGuiCard.GetComponent<GuiCardScript>().childOuterImages[i].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+
     public void UpdateGuiCard(Card newCard, List<Object> spriteList)
     {
+
+        //Debug.Log("spriteList: " + spriteList.Count);
+        //Debug.Log("newCard: " + (newCard == null));
+        //Debug.Log("childOuterImages: " + childOuterImages.Count);
         // offset all individual angles with a single value
         // so that images aren't always in the same place
         int rndAngle1 = Random.Range(0, 359);
@@ -105,17 +109,11 @@ public class GuiCardScript : MonoBehaviour
             }
             else // update and rotate outer images
             {
-                childOuterImages[i].GetComponent<SpriteRenderer>().sprite = (Sprite)spriteList[i];
-                childOuterImages[i].GetComponent<Transform>().RotateAround(this.transform.position, zAxis, rndAngle1);
+                //Debug.Log(childOuterImages[i]);
+                //Debug.Log(childOuterImages[i].GetComponent<SpriteRenderer>().sprite == null);
+                this.childOuterImages[i].GetComponent<SpriteRenderer>().sprite = (Sprite)spriteList[i];
+                this.childOuterImages[i].GetComponent<Transform>().RotateAround(this.transform.position, zAxis, rndAngle1);
             }
-        }
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            //applyRotationalOffset();
         }
     }
 }
