@@ -7,8 +7,6 @@ public class PlayerScript : MonoBehaviour
     // This is the card pool for this player
     public List<Card> playerdeck;
 
-    // this is probably going to be the score i.e. to be displayed
-    // as once the player gets to zero cards they've won.
     private int noCardsRemaining;
     public int NoCardsRemaining
     {

@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-
     /**/
     /**/
     /**/
@@ -32,8 +31,6 @@ public class GameManagerScript : MonoBehaviour
         // each player Game Object stored in a list
         foreach (Transform child in players.transform)
         {
-            //Debug.Log(child.tag + " " + child.name);
-
             if (child.gameObject.CompareTag("Player"))
             {
                 playerGOlist.Add(child.gameObject);
@@ -53,13 +50,6 @@ public class GameManagerScript : MonoBehaviour
         // pretty sure can pop() the last card and then updating is always
         // using the last card
         updateGuiCards();
-
-        /*
-        foreach(GameObject go in playerGOlist)
-        {
-            Debug.Log(go.name + " cards in deck: " +
-                go.GetComponent<PlayerScript>().NoCardsRemaining);
-        }*/
     }
 
     private void assignPlayerDecks()
@@ -70,12 +60,7 @@ public class GameManagerScript : MonoBehaviour
     // ignore the element of index 0 (of GenerateDeck.deck) as this is the card assigned
     // to the centralComparisonCard 
 
-    //GenerateDeck.deck
-
-    ////
     /// https://stackoverflow.com/questions/11463734/split-a-list-into-smaller-lists-of-n-size
-    ///
-
     List<List<Card>> listOfPlayersDecks = SplitList(GenerateDeck.deck, numCardsPerDeck);
 
         // assign each player a playerdeck
@@ -106,67 +91,16 @@ public class GameManagerScript : MonoBehaviour
         int Idx = 0;
         List<Card> deck = GenerateDeck.deck;
 
-        //Debug.Log("deck.Count: " + deck.Count);
-
-        //int rndIdx = Random.Range(0, deck.Count - 1);
-        //Debug.Log("rndIdx: " + rndIdx);
-
         Card card = new Card(deck[Idx].imageIndexs);
-
-        //Debug.Log("card.imageIndexs.Count: " + card.imageIndexs.Count);
-        //Debug.Log("GenerateDeck.GetSpritesForCard: " + GenerateDeck.GetSpritesForCard(card.imageIndexs));
 
         centralComparisonCard.GetComponent<GuiCardScript>().UpdateGuiCard(card, GenerateDeck.GetSpritesForCard(card.imageIndexs));
     }
 
     private void updateGuiCards()
     {
-        /*
-        List<Card> deck = GenerateDeck.deck;
-
-        List<int> idxUsedList = new List<int>();
-
-        foreach (GameObject g in guiCards)
-        {
-            // This gives the GuiCard a new Dobble card
-            // i.e. a new set of images 
-            // this is random and really just as a test
-            // for when playing I want to implement it as a game
-
-            /// Pick a random Dobble card
-            int rndIdx;
-
-            /// finds another integer if the random one chosen
-            /// has already been used and therefore already drawn
-            /// so no duplicate cards
-            do
-            {
-                rndIdx = UnityEngine.Random.Range(0, deck.Count -1);
-
-            } while (idxUsedList.Contains(rndIdx));
-
-            idxUsedList.Add(rndIdx);
-
-            Card card = new Card(deck[rndIdx].imageIndexs);
-
-            g.GetComponent<GuiCardScript>().UpdateGuiCard(card, GenerateDeck.GetSpritesForCard(card.imageIndexs));
-
-        }
-        */
-
         foreach(GameObject playerGo in playerGOlist)
         {
-
             drawSingleCard(playerGo);
-            /*
-            // Get last card from the player's deck
-            PlayerScript ps = playerGo.GetComponent<PlayerScript>();
-            List<Card> deck = ps.playerdeck;
-            int idxLastCard = deck.Count - 1;
-
-            Card card = new Card(deck[idxLastCard].imageIndexs);
-            
-            ps.GetComponentInChildren<GuiCardScript>().UpdateGuiCard(card, GenerateDeck.GetSpritesForCard(card.imageIndexs));*/
         }
     }
 
@@ -190,11 +124,9 @@ public class GameManagerScript : MonoBehaviour
     private void DetectSpritesClickedOn()
     {
         /// Detect if sprites are clicked on
-        /// 
         /// https://www.codegrepper.com/code-examples/csharp/unity+2d+detect+click+on+sprite
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("getmousedown");
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
@@ -217,10 +149,7 @@ public class GameManagerScript : MonoBehaviour
                     /// g is the Game Object that is the GuiCard thats the parent
                     /// of the image that was clicked on
                     GameObject g = hit.collider.gameObject.transform.parent.gameObject;
-                    
-
                     PlayerScript ps = g.transform.parent.GetComponent<PlayerScript>();
-
 
                     // has to have one card to delete from the deck
                     if (ps.NoCardsRemaining >= 1)
@@ -238,10 +167,6 @@ public class GameManagerScript : MonoBehaviour
                             // Turn the central comparison card into the card that was used to find the match
                             centralComparisonCard.GetComponent<GuiCardScript>().UpdateGuiCard(g);
 
-                            // Update the cards? (this should really only be the card
-                            // that needs updating, because they need a new one,
-                            // the player who didn't guess should not be redrawn
-                            //updateGuiCards();
                             drawSingleCard(g.transform.parent.gameObject);
                         }
                     }
@@ -279,49 +204,8 @@ public class GameManagerScript : MonoBehaviour
         }
 
         return false;
-        /*
-        foreach(GameObject guiCardGO in guiCards)
-        {
-            if (guiCardGO.name == parentName)
-            {
-                continue;
-            }
-
-            bool foundImage = false;
-            foreach(GameObject childImageGO in guiCardGO.GetComponent<GuiCardScript>().childOuterImages)
-            {
-                if (imageName == childImageGO.GetComponent<SpriteRenderer>().sprite.name)
-                {
-                    foundImage = true;
-                    break;
-                }
-            }
-
-            // look for centre image, above is outer images only
-            if (imageName == guiCardGO.GetComponent<GuiCardScript>().centreImage.GetComponent<SpriteRenderer>().sprite.name)
-            {
-                foundImage = true;
-            }
-
-            // if false here then we have a card that doesn't contain the image
-            // we're looking for, therefore we can stop and return false
-            // as the image has to be in all cards to be a match
-            if (foundImage == false)
-            {
-                return false;
-            }
-        }
-
-        // this code is only reachable if there is an image in each card
-        // because it returns at the end of each card if an image isn't found
-        return true;
-        */
     }
-
-
-    /// <summary>
     /// https://www.youtube.com/watch?v=VbZ9_C4-Qbo&list=PLhwwh6WoCwTKJebe8LBwqhjgfIiiGZOXt&index=2
-    /// </summary>
     void EndGame()
     {
         if(gameHasEnded == false)
@@ -339,6 +223,7 @@ public class GameManagerScript : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
+    // How to reload current scene
     /*
     void Restart()
     {

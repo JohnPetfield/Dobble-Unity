@@ -43,8 +43,6 @@ public class GuiCardScript : MonoBehaviour
                 centreImage.transform.RotateAround(this.transform.position, zAxis, rnd);
             }
         }
-
-        //Debug.Log("guicardscrip.start() - childOuterImages.Count: " + childOuterImages.Count);
     }
     private static List<double> CalculateImageAngles(double n)
     {
@@ -89,10 +87,6 @@ public class GuiCardScript : MonoBehaviour
 
     public void UpdateGuiCard(Card newCard, List<Object> spriteList)
     {
-
-        //Debug.Log("spriteList: " + spriteList.Count);
-        //Debug.Log("newCard: " + (newCard == null));
-        //Debug.Log("childOuterImages: " + childOuterImages.Count);
         // offset all individual angles with a single value
         // so that images aren't always in the same place
         int rndAngle1 = Random.Range(0, 359);
@@ -109,8 +103,6 @@ public class GuiCardScript : MonoBehaviour
             }
             else // update and rotate outer images
             {
-                //Debug.Log(childOuterImages[i]);
-                //Debug.Log(childOuterImages[i].GetComponent<SpriteRenderer>().sprite == null);
                 this.childOuterImages[i].GetComponent<SpriteRenderer>().sprite = (Sprite)spriteList[i];
                 this.childOuterImages[i].GetComponent<Transform>().RotateAround(this.transform.position, zAxis, rndAngle1);
             }
