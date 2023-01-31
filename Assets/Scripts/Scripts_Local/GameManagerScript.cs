@@ -8,13 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-    /**/
-    /**/
-    /**/
+
     public static bool debug = false;
-    /**/
-    /**/
-    /**/
 
     public List<GameObject> guiCards;
     public GameObject centralComparisonCard;
@@ -44,12 +39,12 @@ public class GameManagerScript : MonoBehaviour
         assignPlayerDecks();
 
         // Central card is always index 0 of GenerateDeck.deck
-        setInitialCentralComparisonCard();
+        SetInitialCentralComparisonCard();
 
         // Normal cards should always use the last card in the player deck
         // pretty sure can pop() the last card and then updating is always
         // using the last card
-        updateGuiCards();
+        UpdateGuiCards();
     }
 
     private void assignPlayerDecks()
@@ -57,11 +52,11 @@ public class GameManagerScript : MonoBehaviour
         int numPlayerDecksNeeded = playerGOlist.Count;
         int numCardsPerDeck = (GenerateDeck.deck.Count - 1) / numPlayerDecksNeeded;
 
-    // ignore the element of index 0 (of GenerateDeck.deck) as this is the card assigned
-    // to the centralComparisonCard 
+        // ignore the element of index 0 (of GenerateDeck.deck) as this is the card assigned
+        // to the centralComparisonCard 
 
-    /// https://stackoverflow.com/questions/11463734/split-a-list-into-smaller-lists-of-n-size
-    List<List<Card>> listOfPlayersDecks = SplitList(GenerateDeck.deck, numCardsPerDeck);
+        /// https://stackoverflow.com/questions/11463734/split-a-list-into-smaller-lists-of-n-size
+        List<List<Card>> listOfPlayersDecks = SplitList(GenerateDeck.deck, numCardsPerDeck);
 
         // assign each player a playerdeck
         int i = 0;
@@ -84,7 +79,7 @@ public class GameManagerScript : MonoBehaviour
         return list;
     }
 
-    private void setInitialCentralComparisonCard()
+    private void SetInitialCentralComparisonCard()
     {
         // Now deck is shuffled the initial index can be fixed
         // which will allow to distribute the cards amongst players easier
@@ -96,15 +91,15 @@ public class GameManagerScript : MonoBehaviour
         centralComparisonCard.GetComponent<GuiCardScript>().UpdateGuiCard(card, GenerateDeck.GetSpritesForCard(card.imageIndexs));
     }
 
-    private void updateGuiCards()
+    private void UpdateGuiCards()
     {
         foreach(GameObject playerGo in playerGOlist)
         {
-            drawSingleCard(playerGo);
+            DrawSingleCard(playerGo);
         }
     }
 
-    private void drawSingleCard(GameObject playerGO)
+    private void DrawSingleCard(GameObject playerGO)
     {
         // Get last card from the player's deck
         PlayerScript ps = playerGO.GetComponent<PlayerScript>();
@@ -134,9 +129,8 @@ public class GameManagerScript : MonoBehaviour
             if (hit.collider != null)
             {
                 string imageName = hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite.name;
-                string parentNameOfImage = hit.collider.gameObject.transform.parent.name;
 
-                bool matchFound = testMatch(imageName /*, parentNameOfImage*/ );
+                bool matchFound = TestMatch(imageName);
 
                 if(debug == true)
                 {
@@ -167,7 +161,7 @@ public class GameManagerScript : MonoBehaviour
                             // Turn the central comparison card into the card that was used to find the match
                             centralComparisonCard.GetComponent<GuiCardScript>().UpdateGuiCard(g);
 
-                            drawSingleCard(g.transform.parent.gameObject);
+                            DrawSingleCard(g.transform.parent.gameObject);
                         }
                     }
                     else // no more cards in deck so that player has won the game
@@ -180,13 +174,11 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
-    /// <summary>
     ///  This checks all cards, so by default it checks the card that the image
     ///  that was clicked on also. This probably should be better and in a 
     /// a scenario where there are 3 cards this isn't correct at all and
     /// will need rewritting
-    /// </summary>
-    private bool testMatch(string imageName /*, string parentName */)
+    private bool TestMatch(string imageName /*, string parentName */)
     {
         // look through outer images, in the central comparison card
         foreach (GameObject childImageGO in centralComparisonCard.GetComponent<GuiCardScript>().childOuterImages)
@@ -212,10 +204,7 @@ public class GameManagerScript : MonoBehaviour
         {
             Debug.Log("game over");
             this.gameHasEnded = true;
-            //this.Restart();
-            //Invoke("Restart", restartDelay);
             Invoke("OpenEndGameMenu", restartDelay);
-            //this.OpenEndGameMenu();
         }
     }
     void OpenEndGameMenu()

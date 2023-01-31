@@ -11,9 +11,9 @@ public class ScoreScript : MonoBehaviour
     {
         this.score = GetComponent<Text>(); 
     }
-    // Update is called once per frame
     void Update()
     {
+
         this.score.text = player.GetComponent<PlayerScript>().NoCardsRemaining.ToString();
     }
 }

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2560237015773962853, guid: 3913e94e286ee5e4cbc5bbc2fbc2148b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2560237015773962853, guid: 3913e94e286ee5e4cbc5bbc2fbc2148b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fcd718c4461184ab7c973258f94589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCard: {fileID: 0}
 --- !u!1 &103591477
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +264,7 @@ MonoBehaviour:
   centralComparisonCard: {fileID: 1311835100153371418}
   players: {fileID: 775305942}
   playerGOlist: []
+  restartDelay: 0
 --- !u!4 &103591479
 Transform:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -450,7 +450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fcd718c4461184ab7c973258f94589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCard: {fileID: 0}
 --- !u!1 &775305942
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2560237015773962853, guid: 3913e94e286ee5e4cbc5bbc2fbc2148b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2560237015773962853, guid: 3913e94e286ee5e4cbc5bbc2fbc2148b, type: 3}
       propertyPath: m_LocalPosition.y

@@ -59,7 +59,7 @@ public class GuiCardScript : MonoBehaviour
         return anglesList;
     }
 
-    public void applyRotationalOffset()
+    public void ApplyRotationalOffset()
     {
         Vector3 zAxis = new Vector3(0, 0, 1);
         int rnd = Random.Range(0, 359);

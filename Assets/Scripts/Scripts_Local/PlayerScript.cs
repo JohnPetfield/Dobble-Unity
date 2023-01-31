@@ -3,7 +3,6 @@ using UnityEngine;
 using DobbleConsoleProject;
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject playerCard;
     // This is the card pool for this player
     public List<Card> playerdeck;
 

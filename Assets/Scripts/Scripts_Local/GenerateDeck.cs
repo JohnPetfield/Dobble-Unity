@@ -16,7 +16,6 @@ public class GenerateDeck : MonoBehaviour
     void Awake()
     {
         Dobble d = new Dobble(n);
-        //deck = d.createDeck();
         deck = d.createShuffledDeck();
 
         /// https://docs.unity3d.com/ScriptReference/Resources.LoadAll.html
